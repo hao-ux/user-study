@@ -2,8 +2,8 @@ import os
 import json
 
 # ================= 配置区 =================
-DIR_A = "A"    # 模型 A 的文件夹名
-DIR_B = "B"    # 模型 B 的文件夹名
+DIR_A = "model_A_img"    # 模型 A 的文件夹名
+DIR_B = "model_B_img"    # 模型 B 的文件夹名
 DIR_REF = "ref_img"      # 参考图文件夹名 (如果没有参考图，保持原样即可)
 OUTPUT_FILE = "config.json"
 # ==========================================

@@ -464,17 +464,34 @@
 
     progressLabel.textContent = `${current+1} / ${order.length}`;
     progressFill.style.width = `${((current+1)/order.length)*100}%`;
-    //window.scrollTo({top: 0, behavior: 'smooth'}); // 切换时自动回到顶部
+    // 删除了这里的自动置顶，这样点击选项时就不会乱跳了
   }
 
-  prevBtn.addEventListener('click', ()=>{ if (current>0){ current--; renderCurrent(); } });
-  skipBtn.addEventListener('click', ()=>{ responses[currentGroupIndex()].skipped = true; advance(); });
+  // 将置顶逻辑精确移动到“上一组”、“跳过”和“下一组”的按钮点击事件中
+  prevBtn.addEventListener('click', ()=>{ 
+    if (current>0){ 
+      current--; 
+      renderCurrent(); 
+      window.scrollTo({top: 0, behavior: 'smooth'}); 
+    } 
+  });
+  
+  skipBtn.addEventListener('click', ()=>{ 
+    responses[currentGroupIndex()].skipped = true; 
+    advance(); 
+  });
+  
   nextBtn.addEventListener('click', advance);
 
   function advance(){
-    if (current === order.length -1){ finishStudy(); return; }
+    if (current === order.length -1){ 
+      finishStudy(); 
+      window.scrollTo({top: 0, behavior: 'smooth'}); 
+      return; 
+    }
     current++;
     renderCurrent();
+    window.scrollTo({top: 0, behavior: 'smooth'}); 
   }
   function finishStudy(){ showScreen('summary'); renderSummary(); }
 

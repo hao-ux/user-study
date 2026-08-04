@@ -464,7 +464,7 @@
 
     progressLabel.textContent = `${current+1} / ${order.length}`;
     progressFill.style.width = `${((current+1)/order.length)*100}%`;
-    window.scrollTo({top: 0, behavior: 'smooth'}); // 切换时自动回到顶部
+    //window.scrollTo({top: 0, behavior: 'smooth'}); // 切换时自动回到顶部
   }
 
   prevBtn.addEventListener('click', ()=>{ if (current>0){ current--; renderCurrent(); } });
